@@ -38,3 +38,45 @@ test('\nnameless table headers', function (t) {
   t.end()
 })
 
+test('\nemoji-first header names', function (t) {
+  var content = require('fs').readFileSync(__dirname + '/fixtures/readme-emoji-headers.md', 'utf8');
+  var headers = transform(content);
+
+  t.same(
+      headers.toc.split('\n')
+    , [ '',
+        '- [🔴 or 🟡 - At Risk](#-or----at-risk)',
+        '- [🔄 Still Need Updates](#-still-need-updates)',
+        '  - [⏱ Past-Due Items](#-past-due-items)',
+        '- [➡ ETA Changes This Week](#-eta-changes-this-week)',
+        '- [🚀 Shipped this week](#-shipped-this-week)',
+        '- [🛠 Availability repair items](#-availability-repair-items)',
+        '- [🎟 Support Tickets](#-support-tickets)',
+        '- [🔬 Team-by-team Breakdown: Hello](#-team-by-team-breakdown-hello)',
+        '' ]
+    , 'generates a correct toc when readme has emojis as the first character for headings'
+  )
+
+  t.end()
+})
+
+
+test('\nformatted headers', function (t) {
+  var content = require('fs').readFileSync(__dirname + '/fixtures/readme-with-formatted-headers.md', 'utf8');
+  var headers = transform(content);
+
+  t.same(
+      headers.toc.split('\n')
+    , [ '',
+        '- [foo _bar_](#foo-bar)',
+        '- [foo **baz**](#foo-baz)',
+        '- [foo ~baf~](#foo-baf)',
+        '- [bar_foo](#bar_foo)',
+        '- [baz_foo_](#baz_foo_)',
+        '- [_foo_bax_](#foo_bax)',
+        '' ]
+    , 'generates a correct toc when readme includes formatting in the heading title'
+  )
+
+  t.end()
+})

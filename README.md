@@ -1,4 +1,4 @@
-# DocToc [![build status](https://secure.travis-ci.org/thlorenz/doctoc.svg)](http://travis-ci.org/thlorenz/doctoc)
+# DocToc [![Node.js CI](https://github.com/thlorenz/doctoc/actions/workflows/node.js.yml/badge.svg)](https://github.com/thlorenz/doctoc/actions/workflows/node.js.yml)
 
 Generates table of contents for markdown files inside local git repository. Links are compatible with anchors generated
 by github or other sites via a command line flag.
@@ -38,8 +38,8 @@ examples.
 
 ### Adding toc to all files in a directory and sub directories
 
-Go into the directory that contains you local git project and type:
-    
+Go into the directory that contains your local git project and type:
+
     doctoc .
 
 This will update all markdown files in the current directory and all its
@@ -89,14 +89,14 @@ Available modes are:
 
 By default, doctoc places the toc at the top of the file. You can indicate to have it placed elsewhere with the following format:
 
-```
+```markdown
 <!-- START doctoc -->
 <!-- END doctoc -->
 ```
 
 You place this code directly in your .md file. For example:
 
-```
+```markdown
 // my_new_post.md
 Here we are, introducing the post. It's going to be great!
 But first: a TOC for easy reference.
@@ -114,7 +114,7 @@ Running doctoc will insert the toc at that location.
 
 ### Specifying a custom TOC title
 
-Use the `--title` option to specify a (Markdown-formatted) custom TOC title; e.g., `doctoc --title '**Contents**' .` From then on, you can simply run `doctoc <file>` and doctoc will will keep the title you specified.
+Use the `--title` option to specify a (Markdown-formatted) custom TOC title; e.g., `doctoc --title '**Contents**' .` From then on, you can simply run `doctoc <file>` and doctoc will keep the title you specified.
 
 Alternatively, to blank out the title, use the `--notitle` option. This will simply remove the title from the TOC.
 
